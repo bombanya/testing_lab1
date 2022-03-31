@@ -7,6 +7,18 @@
     <groupId>com.bombanya</groupId>
     <artifactId>testing_lab1</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>10</source>
+                    <target>10</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -30,6 +42,20 @@
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.4.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>4.4.0</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
