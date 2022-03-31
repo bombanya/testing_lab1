@@ -1,4 +1,4 @@
-package hitchhiking;
+package com.bombanya.lab1.hitchhiking;
 
 import org.junit.jupiter.api.Test;
 
@@ -32,5 +32,19 @@ class EarthCreatureTest {
     @Test
     void testTheDolphinHadAlwaysBelievedThatTheyWereFarMoreIntelligentThanMan(){
         assertTrue(dolphin.smarterThan(human));
+    }
+
+    @Test
+    void twoHumans(){
+        Human anotherHuman = new Human("petya");
+        assertFalse(anotherHuman.smarterThan(human));
+        assertIterableEquals(human.getAchievements(), anotherHuman.getAchievements());
+    }
+
+    @Test
+    void twoDolphins(){
+        Dolphin anotherDolphin = new Dolphin("anotherDolphin");
+        assertFalse(anotherDolphin.smarterThan(dolphin));
+        assertIterableEquals(dolphin.getAchievements(), anotherDolphin.getAchievements());
     }
 }

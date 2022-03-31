@@ -1,10 +1,13 @@
+package com.bombanya.lab1;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SelectionSortTest {
 
@@ -42,6 +45,31 @@ class SelectionSortTest {
                 new Integer[]{-17, -9, 1, 3, 4, 17, 80},
                 new Integer[]{-17, -9, 1, 3, 4, 17, 80}
         );
+        assertTrue(checkIterations(iterations, SelectionSort.sort(arr)));
+    }
+
+    @Test
+    void sortTest4(){
+        Integer[] arr = {666};
+        List<Integer[]> iterations  = new ArrayList<>();
+        assertTrue(checkIterations(iterations, SelectionSort.sort(arr)));
+    }
+
+    @Test
+    void sortTest5(){
+        Integer[] arr = {1, 2, 3};
+        List<Integer[]> iterations = Arrays.asList(
+                new Integer[]{1, 2, 3},
+                new Integer[]{1, 2, 3});
+        assertTrue(checkIterations(iterations, SelectionSort.sort(arr)));
+    }
+
+    @Test
+    void sortTest6(){
+        Integer[] arr = {1000, 1000, 1000};
+        List<Integer[]> iterations = Arrays.asList(
+                new Integer[]{1000, 1000, 1000},
+                new Integer[]{1000, 1000, 1000});
         assertTrue(checkIterations(iterations, SelectionSort.sort(arr)));
     }
 

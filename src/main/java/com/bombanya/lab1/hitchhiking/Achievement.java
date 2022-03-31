@@ -1,4 +1,4 @@
-package hitchhiking;
+package com.bombanya.lab1.hitchhiking;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

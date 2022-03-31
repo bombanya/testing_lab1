@@ -1,9 +1,9 @@
-package hitchhiking;
+package com.bombanya.lab1.hitchhiking;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static hitchhiking.Achievement.Purpose.*;
+import static com.bombanya.lab1.hitchhiking.Achievement.Purpose.*;
 
 public class Human extends EarthCreature{
 
