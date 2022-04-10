@@ -1,13 +1,16 @@
 package com.bombanya.lab2.logs;
 
+import com.bombanya.lab2.CsvWriter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -75,6 +78,20 @@ class LogTest {
         assertEquals(result,
                 log.calculate(BigDecimal.valueOf(argument), precision).doubleValue(),
                 delta);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {2, 3, 5})
+    void writeTestCsv(int base) throws IOException {
+        Log log = new Log(new Ln(), base);
+        CsvWriter.builder()
+                .function(log)
+                .start(0.01)
+                .finish(5)
+                .step(0.01)
+                .filePath("log" + base + "Test.csv")
+                .build()
+                .write();
     }
 
 }

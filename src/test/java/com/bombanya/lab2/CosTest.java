@@ -1,8 +1,11 @@
 package com.bombanya.lab2;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 
 import static java.lang.Math.PI;
@@ -31,5 +34,17 @@ class CosTest {
         assertEquals(cos.calculate(BigDecimal.valueOf(argument), precision).doubleValue(),
                 cos.calculate(BigDecimal.valueOf(argument - 8*PI), precision).doubleValue(),
                 delta);
+    }
+
+    @Test
+    void writeTestCsv() throws IOException {
+        CsvWriter writer = CsvWriter.builder()
+                .function(cos)
+                .start(-4)
+                .finish(5)
+                .step(0.01)
+                .filePath("cosTests.csv")
+                .build();
+        writer.write();
     }
 }

@@ -3,6 +3,7 @@ package com.bombanya.lab2;
 import com.bombanya.lab2.logs.Ln;
 import com.bombanya.lab2.logs.Log;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -11,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -155,5 +157,24 @@ class FunctionsSystemTest {
         assertEquals(result,
                 system.calculate(BigDecimal.valueOf(argument), precision).doubleValue(),
                 delta);
+    }
+
+    @Test
+    void printTestCsv() throws IOException {
+        var system = FunctionsSystem.builder()
+                .cos(new Cos())
+                .ln(new Ln())
+                .log2(new Log(new Ln(), 2))
+                .log3(new Log(new Ln(), 3))
+                .log5(new Log(new Ln(), 5))
+                .build();
+        CsvWriter.builder()
+                .function(system)
+                .start(-3)
+                .finish(7)
+                .step(0.01)
+                .filePath("systemTest.csv")
+                .build()
+                .write();
     }
 }

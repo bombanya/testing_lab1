@@ -1,8 +1,11 @@
 package com.bombanya.lab2.logs;
 
+import com.bombanya.lab2.CsvWriter;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,5 +28,17 @@ class LnTest {
     void testOutsideDomain(double argument){
         assertThrows(ArithmeticException.class, () ->
                 ln.calculate(BigDecimal.valueOf(argument), precision));
+    }
+
+    @Test
+    void writeTestCsv() throws IOException {
+        CsvWriter writer = CsvWriter.builder()
+                .function(ln)
+                .start(0.01)
+                .finish(5)
+                .step(0.01)
+                .filePath("lnTest.csv")
+                .build();
+        writer.write();
     }
 }
